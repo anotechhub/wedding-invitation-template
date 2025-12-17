@@ -1,0 +1,1375 @@
+/* ============================================
+   NEW FEATURES ENHANCEMENT STYLES
+   ============================================ */
+
+/* ===========================================
+   STICKY NAVIGATION
+   =========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-sticky);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.navbar.scrolled {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.navbar.nav-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.brand-initials {
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.brand-separator {
+    font-size: 1.2rem;
+    animation: heartbeat 2s infinite;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    list-style: none;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-brown);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-gold);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Mobile Toggle */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: var(--z-sticky);
+}
+
+.nav-toggle span {
+    width: 100%;
+    height: 3px;
+    background: var(--color-gold);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ===========================================
+   WISH WALL / GUEST BOOK
+   =========================================== */
+.wishes-section {
+    background: linear-gradient(180deg,
+            var(--color-champagne-light) 0%,
+            var(--color-cream) 100%);
+}
+
+.wish-form {
+    max-width: 600px;
+    margin: 0 auto var(--space-3xl);
+    padding: var(--space-xl);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.wish-form-group {
+    position: relative;
+    margin-bottom: var(--space-lg);
+}
+
+.wish-form-group input,
+.wish-form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    padding-top: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-base);
+    color: var(--color-deep-brown);
+    transition: all 0.3s ease;
+}
+
+.wish-form-group input:focus,
+.wish-form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.wish-form-group label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: var(--color-soft-gray);
+    font-size: var(--fs-sm);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.wish-form-group input:focus+label,
+.wish-form-group input:not(:placeholder-shown)+label,
+.wish-form-group textarea:focus+label,
+.wish-form-group textarea:not(:placeholder-shown)+label {
+    top: 0.3rem;
+    font-size: 0.75rem;
+    color: var(--color-gold);
+}
+
+.char-count {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-soft-gray);
+}
+
+.btn-submit-wish {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: var(--fs-base);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.btn-submit-wish svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-submit-wish:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+}
+
+.btn-submit-wish:active {
+    transform: translateY(0);
+}
+
+/* Wish Wall Display */
+.wish-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.wish-card {
+    padding: var(--space-lg);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.wish-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.wish-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.wish-avatar {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+    color: var(--color-white);
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.wish-meta {
+    flex: 1;
+}
+
+.wish-name {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    color: var(--color-deep-brown);
+    margin-bottom: 0.25rem;
+}
+
+.wish-time {
+    font-size: var(--fs-xs);
+    color: var(--color-soft-gray);
+}
+
+.wish-message {
+    color: var(--color-brown);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+.wish-like-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-full);
+    color: var(--color-gold);
+    font-size: var(--fs-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wish-like-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.wish-like-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-white);
+}
+
+.wish-like-btn.liked {
+    background: var(--color-gold);
+    color: var(--color-white);
+}
+
+.no-wishes {
+    text-align: center;
+    padding: var(--space-3xl);
+    color: var(--color-soft-gray);
+    font-size: var(--fs-lg);
+}
+
+/* ===========================================
+   RSVP ENHANCEMENTS
+   =========================================== */
+.rsvp-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.stats-item {
+    text-align: center;
+    padding: var(--space-md);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-lg);
+    min-width: 100px;
+}
+
+.stats-number {
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: var(--color-gold);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    transition: transform 0.3s ease;
+}
+
+.stats-label {
+    font-size: var(--fs-xs);
+    color: var(--color-soft-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ========================================
+   RSVP FORM - FIXED LAYOUT
+   ======================================== */
+
+/* Radio Group Container */
+.radio-group {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.radio-group legend {
+    display: block;
+    color: var(--color-gold);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Radio Label - Fixed layout */
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    pointer-events: auto;
+}
+
+.radio-label:last-of-type {
+    margin-bottom: 0;
+}
+
+.radio-label:hover {
+    border-color: var(--color-gold);
+    background: rgba(212, 175, 55, 0.15);
+}
+
+/* Hide default radio input */
+.radio-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Custom Radio Button */
+.radio-custom {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 2px solid var(--color-gold);
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.radio-label input[type="radio"]:checked~.radio-custom {
+    background: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+.radio-label input[type="radio"]:checked~.radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--color-white);
+    border-radius: 50%;
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+    border-color: var(--color-gold);
+    background: rgba(212, 175, 55, 0.15);
+}
+
+/* Radio Text */
+.radio-text {
+    color: var(--color-white);
+    font-size: var(--fs-base);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* ========================================
+   RSVP FORM INPUT STYLING - FIXED
+   ======================================== */
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.rsvp-form .form-group {
+    margin-bottom: 0;
+    position: relative;
+}
+
+/* Text Inputs and Textarea */
+.rsvp-form input[type="text"],
+.rsvp-form textarea {
+    width: 100%;
+    padding: 1.25rem 1rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-base);
+    color: var(--color-white);
+    transition: all 0.3s ease;
+}
+
+.rsvp-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.rsvp-form input[type="text"]:focus,
+.rsvp-form textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Floating Labels for Text Inputs */
+.rsvp-form .form-group>label:not(.radio-label) {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--fs-sm);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background: transparent;
+    padding: 0 0.25rem;
+}
+
+.rsvp-form input[type="text"]:focus+label,
+.rsvp-form input[type="text"]:not(:placeholder-shown)+label,
+.rsvp-form textarea:focus+label,
+.rsvp-form textarea:not(:placeholder-shown)+label {
+    top: 0.25rem;
+    font-size: 0.7rem;
+    color: var(--color-gold);
+}
+
+/* Select Dropdown */
+.rsvp-form select {
+    width: 100%;
+    padding: 1.25rem 1rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-base);
+    color: var(--color-white);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 18px;
+}
+
+.rsvp-form select:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Select Label - Always Visible */
+.rsvp-form .form-group:has(select)>label {
+    position: absolute;
+    left: 1rem;
+    top: 0.25rem;
+    color: var(--color-gold);
+    font-size: 0.7rem;
+    pointer-events: none;
+    background: transparent;
+    padding: 0 0.25rem;
+}
+
+/* Fix option color in select (since bg is dark) */
+.rsvp-form select option {
+    background: var(--color-deep-brown);
+    color: var(--color-white);
+}
+
+.rsvp-success {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    padding: var(--space-xl) var(--space-2xl);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: var(--z-modal);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.rsvp-success.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.rsvp-success svg {
+    width: 60px;
+    height: 60px;
+    stroke: var(--color-gold);
+    margin: 0 auto var(--space-md);
+}
+
+.rsvp-success h3 {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    color: var(--color-gold);
+    margin-bottom: var(--space-sm);
+}
+
+.rsvp-success p {
+    color: var(--color-brown);
+    font-size: var(--fs-base);
+}
+
+/* ===========================================
+   CALENDAR BUTTON
+   =========================================== */
+.calendar-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-xl);
+    position: relative;
+}
+
+.btn-add-calendar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-full);
+    color: var(--color-gold);
+    font-weight: 600;
+    font-size: var(--fs-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-add-calendar svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-add-calendar:hover {
+    background: var(--color-gold);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+}
+
+.calendar-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0.5rem);
+    min-width: 200px;
+    background: var(--color-white);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: top center;
+    transition: all 0.3s ease;
+    z-index: var(--z-dropdown);
+}
+
+.calendar-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0.5rem) scale(1);
+}
+
+.calendar-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    width: 100%;
+    padding: var(--space-md);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    color: var(--color-brown);
+    font-size: var(--fs-sm);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calendar-option:last-child {
+    border-bottom: none;
+}
+
+.calendar-option:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.calendar-option svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ===========================================
+   COPY BUTTONS (GIFT SECTION)
+   =========================================== */
+.copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    color: var(--color-gold);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: var(--space-md);
+}
+
+.copy-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.copy-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.copy-btn.copied {
+    background: #28a745;
+    border-color: #28a745;
+    color: var(--color-white);
+}
+
+/* ===========================================
+   TOAST NOTIFICATIONS
+   =========================================== */
+.toast {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    min-width: 300px;
+    padding: var(--space-md);
+    background: var(--color-white);
+    border-left: 4px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xl);
+    transform: translateX(calc(100% + 2rem));
+    transition: transform 0.3s ease;
+    z-index: var(--z-max);
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.toast-icon {
+    font-size: 1.5rem;
+}
+
+.toast-message {
+    flex: 1;
+    color: var(--color-brown);
+    font-size: var(--fs-sm);
+}
+
+.toast-success {
+    border-left-color: #28a745;
+}
+
+.toast-error {
+    border-left-color: #dc3545;
+}
+
+/* ===========================================
+   CONFETTI ANIMATION
+   =========================================== */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: -10%;
+    animation: confettiFall 4s linear forwards;
+    z-index: var(--z-modal);
+}
+
+@keyframes confettiFall {
+    to {
+        top: 110%;
+        transform: translateX(calc((var(--random-x, 50) - 50) * 1px)) rotate(calc(var(--random-r, 0) * 1deg));
+        opacity: 0;
+    }
+}
+
+/* ===========================================
+   ENHANCED FOOTER - SIMPLIFIED SINGLE SECTION
+   =========================================== */
+.footer {
+    background: var(--color-champagne);
+    padding: var(--space-lg) 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.footer-actions {
+    text-align: center;
+}
+
+.footer-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    justify-content: center;
+}
+
+.footer-icons .social-link,
+.footer-icons .share-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    color: var(--color-gold);
+    transition: all 0.3s ease;
+}
+
+.footer-icons .social-link svg,
+.footer-icons .share-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.footer-icons .social-link:hover,
+.footer-icons .share-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-white);
+    transform: scale(1.1);
+}
+
+.footer-separator {
+    color: rgba(212, 175, 55, 0.4);
+    font-size: 0.8rem;
+    margin: 0 0.25rem;
+}
+
+.footer-info {
+    text-align: center;
+}
+
+.footer-text {
+    font-size: var(--fs-sm);
+    color: var(--color-brown);
+    margin-bottom: 0.25rem;
+}
+
+.footer-heart {
+    display: inline-block;
+    color: #e74c3c;
+    animation: heartbeat 1.5s infinite;
+}
+
+.footer-credit {
+    font-size: var(--fs-xs);
+    color: var(--color-soft-gray);
+}
+
+.footer-credit a {
+    color: var(--color-gold);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-credit a:hover {
+    color: var(--color-gold-dark);
+}
+
+/* ===========================================
+   MOBILE RESPONSIVE
+   =========================================== */
+@media (max-width: 768px) {
+    .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 5rem 2rem 2rem;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.4s ease;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .wish-wall {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-dropdown {
+        left: auto;
+        right: 0;
+        transform: translateY(0.5rem);
+    }
+
+    .calendar-dropdown.show {
+        transform: translateY(0.5rem) scale(1);
+    }
+
+    .toast {
+        right: 1rem;
+        left: 1rem;
+        min-width: auto;
+    }
+
+    .social-links,
+    .share-buttons {
+        flex-wrap: wrap;
+    }
+}
+
+/* Prevent body scroll when nav is open */
+body.nav-open {
+    overflow: hidden;
+}
+
+/* ===========================================
+   STORY TIMELINE ENHANCEMENTS
+   =========================================== */
+.story-timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--space-xl) 0;
+}
+
+/* Central Line */
+.timeline-central-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: rgba(212, 175, 55, 0.2);
+    transform: translateX(-50%);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+    transition: height 0.1s linear;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Timeline Items */
+.story-timeline-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--space-3xl);
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.story-timeline-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.story-marker {
+    position: absolute;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background: var(--color-champagne);
+    border: 2px solid var(--color-gold);
+    border-radius: 50%;
+    transform: translateX(-50%) scale(0);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8), 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.story-timeline-item.active .story-marker {
+    transform: translateX(-50%) scale(1);
+    transition-delay: 0.3s;
+}
+
+.marker-heart {
+    color: var(--color-gold);
+    font-size: 1.2rem;
+    animation: heartbeat 2s infinite;
+}
+
+.story-date-card,
+.story-content-card {
+    width: 42%;
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+}
+
+.story-date-card {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0 var(--space-lg);
+}
+
+/* Left Item Layout */
+.story-timeline-item.left .story-content-card {
+    margin-right: auto;
+    margin-left: 0;
+    /* Force to left side of container (which is centered flex) - actually flex center aligns them. 
+       We need to push them apart. 
+       Flex direction row. Items: Left(Content), Marker(Abs), Right(Date).
+       Wait, simple flex row:
+       [Content   ] [Marker] [Date      ]
+    */
+}
+
+/* Re-thinking Flex Layout for Timeline */
+.story-timeline-item {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.story-timeline-item.left {
+    flex-direction: row-reverse;
+    /* Date on left, Content on Right? No. 
+       Left Item: Content Left, Date Right. 
+       DOM: Date, Marker, Content.
+       We want: Content ... Marker ... Date.
+       So flex-direction: row-reverse IF DOM is Content..Marker..Date?
+       My DOM is: Date, Marker, Content.
+       Content Left -> needs to be first visually?
+       Let's stick to DOM order and swap visual order.
+    */
+    flex-direction: row-reverse;
+}
+
+/* Left Item: DOM [Date, Marker, Content]. Visual [Content, Marker, Date]
+   row-reverse: Content(Start), Marker(Center), Date(End). Perfect.
+*/
+
+.story-timeline-item.right {
+    flex-direction: row;
+    /* Right Item: DOM [Date, Marker, Content]. Visual [Date, Marker, Content]
+       row: Date(Start), Marker(Center), Content(End). Perfect.
+    */
+}
+
+.story-timeline-item.left .story-content-card {
+    text-align: right;
+}
+
+.story-timeline-item.left .story-date-card {
+    text-align: left;
+    align-items: flex-start;
+}
+
+.story-timeline-item.right .story-content-card {
+    text-align: left;
+}
+
+.story-timeline-item.right .story-date-card {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.story-year {
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    color: var(--color-gold);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.story-month {
+    font-family: var(--font-body);
+    font-size: var(--fs-md);
+    color: var(--color-brown);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.story-content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.story-title {
+    color: var(--color-gold);
+    margin-bottom: var(--space-sm);
+    font-size: var(--fs-xl);
+}
+
+.story-text {
+    font-size: var(--fs-base);
+    color: var(--color-soft-gray);
+    line-height: 1.6;
+}
+
+/* Wish Wall Container - Masonry using Columns */
+.wish-wall-container {
+    column-count: 3;
+    column-gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.wish-wall-container .wish-card {
+    display: inline-block;
+    /* Essential for column-count */
+    width: 100%;
+    margin-bottom: var(--space-lg);
+    break-inside: avoid;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .story-timeline-container {
+        padding-left: 0;
+    }
+
+    .timeline-central-line {
+        left: 20px;
+        transform: none;
+    }
+
+    .story-timeline-item,
+    .story-timeline-item.left,
+    .story-timeline-item.right {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 50px;
+        margin-bottom: var(--space-2xl);
+    }
+
+    /* DOM: Date, Marker, Content */
+    /* Mobile: Date Top, Content Bottom. Marker on left line. */
+
+    .story-date-card {
+        width: 100%;
+        text-align: left;
+        align-items: flex-start;
+        padding: 0 0 var(--space-xs) 0;
+        margin: 0;
+        order: -1;
+    }
+
+    .story-content-card {
+        width: 100%;
+        text-align: left;
+        margin: 0;
+    }
+
+    .story-timeline-item.left .story-content-card,
+    .story-timeline-item.right .story-content-card {
+        text-align: left;
+    }
+
+    .story-marker {
+        left: 20px;
+        transform: translateX(-50%) scale(1);
+    }
+
+    .story-timeline-item.active .story-marker {
+        transform: translateX(-50%) scale(1);
+    }
+
+    .wish-wall-container {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 500px) {
+    .wish-wall-container {
+        column-count: 1;
+    }
+}
+
+/* ===========================================
+   GIFT SECTION TABS
+   =========================================== */
+.gift-tabs-container {
+    margin-bottom: var(--space-xl);
+    display: flex;
+    justify-content: center;
+}
+
+.gift-tabs {
+    display: flex;
+    gap: var(--space-md);
+    background: rgba(255, 255, 255, 0.5);
+    padding: var(--space-xs);
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--color-brown);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tab-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.tab-btn:hover {
+    color: var(--color-gold);
+}
+
+.tab-btn.active {
+    background: var(--color-gold);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.qris-container {
+    display: flex;
+    justify-content: center;
+}
+
+.qris-card {
+    background: var(--color-white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-gold);
+    text-align: center;
+    max-width: 350px;
+    box-shadow: var(--shadow-xl);
+}
+
+.qris-header {
+    margin-bottom: var(--space-lg);
+}
+
+.qris-logo {
+    height: 30px;
+}
+
+.qris-code {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto var(--space-md);
+    padding: var(--space-sm);
+    border: 1px solid #ddd;
+    border-radius: var(--radius-md);
+}
+
+.qr-placeholder {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.qris-instruction {
+    font-size: var(--fs-sm);
+    color: var(--color-soft-gray);
+    margin-bottom: var(--space-xs);
+}
+
+.qris-merchant {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--color-gold);
+}

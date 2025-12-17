@@ -1,0 +1,21 @@
+{
+  "name": "undangan-digital",
+  "version": "1.0.0",
+  "description": "Premium Digital Wedding Invitation",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  },
+  "keywords": [
+    "wedding",
+    "invitation",
+    "digital"
+  ],
+  "author": "AnoTechHub",
+  "license": "MIT"
+}
