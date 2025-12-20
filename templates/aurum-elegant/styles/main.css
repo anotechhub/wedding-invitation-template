@@ -1,10 +1,32 @@
-/* ============================================
-   PREMIUM WEDDING INVITATION - MAIN STYLESHEET
-   Design: Modern, Elegant, Cinematic
-   ============================================ */
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║                                                                          ║
+   ║      █████╗ ██╗   ██╗██████╗ ██╗   ██╗███╗   ███╗                       ║
+   ║     ██╔══██╗██║   ██║██╔══██╗██║   ██║████╗ ████║                       ║
+   ║     ███████║██║   ██║██████╔╝██║   ██║██╔████╔██║                       ║
+   ║     ██╔══██║██║   ██║██╔══██╗██║   ██║██║╚██╔╝██║                       ║
+   ║     ██║  ██║╚██████╔╝██║  ██║╚██████╔╝██║ ╚═╝ ██║                       ║
+   ║     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝                       ║
+   ║                                                                          ║
+   ║     ███████╗██╗     ███████╗ ██████╗  █████╗ ███╗   ██╗████████╗        ║
+   ║     ██╔════╝██║     ██╔════╝██╔════╝ ██╔══██╗████╗  ██║╚══██╔══╝        ║
+   ║     █████╗  ██║     █████╗  ██║  ███╗███████║██╔██╗ ██║   ██║           ║
+   ║     ██╔══╝  ██║     ██╔══╝  ██║   ██║██╔══██║██║╚██╗██║   ██║           ║
+   ║     ███████╗███████╗███████╗╚██████╔╝██║  ██║██║ ╚████║   ██║           ║
+   ║     ╚══════╝╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝           ║
+   ║                                                                          ║
+   ║                   「 AURUM-ELEGANT™ WEDDING INVITATION 」                 ║
+   ║                                                                          ║
+   ║     Theme     : Golden Elegance with Champagne & Royal Florals          ║
+   ║     Version   : 2.0.0                                                    ║
+   ║     Created   : 2024 by AnoTechHub                                       ║
+   ║                                                                          ║
+   ║     ✦ Royal Crown Motifs  ✦ Golden Sunburst  ✦ Champagne Florals       ║
+   ║                                                                          ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
 
 /* ============================================
-   1. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   1. AURUM-ELEGANT™ DESIGN SYSTEM
+   Premium Golden Elegance Collection
    ============================================ */
 :root {
     /* Colors - Elegant Palette */
@@ -84,6 +106,46 @@
     --z-modal: 300;
     --z-overlay: 400;
     --z-max: 500;
+
+    /* ═══════════════════════════════════════════
+       AURUM-ELEGANT™ BRAND IDENTITY TOKENS
+       ═══════════════════════════════════════════ */
+
+    /* Aurum Signature Colors */
+    --aurum-champagne: #F7E7CE;
+    --aurum-ivory: #FFFFF0;
+    --aurum-cream: #FFFDD0;
+    --aurum-warm-white: #FBF8F3;
+
+    /* Aurum Crown Accent System */
+    --aurum-crown-gold: #D4AF37;
+    --aurum-crown-brass: #B8962E;
+    --aurum-crown-rose: #DCAE96;
+    --aurum-crown-bronze: #CD7F32;
+
+    /* Aurum Sunburst Effects */
+    --aurum-sunburst-primary: linear-gradient(135deg,
+            rgba(212, 175, 55, 0.15) 0%,
+            rgba(232, 194, 82, 0.1) 50%,
+            rgba(220, 174, 150, 0.08) 100%);
+    --aurum-sunburst-glow: radial-gradient(ellipse at center,
+            rgba(212, 175, 55, 0.25) 0%,
+            rgba(247, 231, 206, 0.15) 40%,
+            transparent 70%);
+
+    /* Aurum Floral Pattern */
+    --aurum-floral-pattern:
+        radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 20%),
+        radial-gradient(circle at 80% 80%, rgba(220, 174, 150, 0.05) 0%, transparent 20%);
+
+    /* Aurum Enhanced Glows */
+    --aurum-glow-intense: 0 0 50px rgba(212, 175, 55, 0.4), 0 0 100px rgba(247, 231, 206, 0.25);
+    --aurum-glow-subtle: 0 0 25px rgba(212, 175, 55, 0.2), 0 0 50px rgba(247, 231, 206, 0.1);
+    --aurum-glow-warm: 0 0 30px rgba(220, 174, 150, 0.3), 0 0 60px rgba(212, 175, 55, 0.15);
+
+    /* Aurum Border Accents */
+    --aurum-border-crown: linear-gradient(135deg, var(--aurum-crown-gold), var(--aurum-crown-rose), var(--aurum-crown-brass));
+    --aurum-border-subtle: rgba(212, 175, 55, 0.2);
 }
 
 /* ============================================

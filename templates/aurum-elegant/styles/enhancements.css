@@ -55,13 +55,36 @@
 }
 
 .brand-initials {
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    color: var(--color-brown);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px rgba(62, 39, 35, 0.18);
 }
 
 .brand-separator {
     font-size: 1.2rem;
     animation: heartbeat 2s infinite;
+    color: var(--color-gold);
+    filter: drop-shadow(0 2px 4px rgba(62, 39, 35, 0.25));
+}
+
+@media (max-width: 480px) {
+    .brand-initials {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.85rem;
+    }
 }
 
 .nav-menu {
@@ -414,8 +437,8 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.25rem;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(12, 10, 8, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -424,6 +447,7 @@
     left: 0;
     transform: none;
     pointer-events: auto;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .radio-label:last-of-type {
@@ -432,7 +456,7 @@
 
 .radio-label:hover {
     border-color: var(--color-gold);
-    background: rgba(212, 175, 55, 0.15);
+    background: rgba(212, 175, 55, 0.12);
 }
 
 /* Hide default radio input */
@@ -453,7 +477,7 @@
     position: relative;
     transition: all 0.3s ease;
     flex-shrink: 0;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .radio-label input[type="radio"]:checked~.radio-custom {
@@ -474,8 +498,9 @@
 }
 
 .radio-label:has(input[type="radio"]:checked) {
-    border-color: var(--color-gold);
-    background: rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.7);
+    background: rgba(212, 175, 55, 0.18);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.12);
 }
 
 /* Radio Text */
@@ -493,6 +518,23 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    padding: clamp(1.5rem, 2vw, 2.5rem);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(16px) saturate(160%);
+}
+
+.rsvp-form::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
 }
 
 .rsvp-form .form-group {
@@ -505,12 +547,13 @@
 .rsvp-form textarea {
     width: 100%;
     padding: 1.25rem 1rem 0.75rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(12, 10, 8, 0.35);
+    border: 1px solid rgba(212, 175, 55, 0.35);
     border-radius: var(--radius-md);
     font-size: var(--fs-base);
     color: var(--color-white);
     transition: all 0.3s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .rsvp-form textarea {
@@ -522,7 +565,8 @@
 .rsvp-form textarea:focus {
     outline: none;
     border-color: var(--color-gold);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(12, 10, 8, 0.45);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
 }
 
 /* Floating Labels for Text Inputs */
@@ -551,14 +595,15 @@
 .rsvp-form select {
     width: 100%;
     padding: 1.25rem 1rem 0.75rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(12, 10, 8, 0.35);
+    border: 1px solid rgba(212, 175, 55, 0.35);
     border-radius: var(--radius-md);
     font-size: var(--fs-base);
     color: var(--color-white);
     transition: all 0.3s ease;
     cursor: pointer;
     appearance: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
@@ -568,7 +613,8 @@
 .rsvp-form select:focus {
     outline: none;
     border-color: var(--color-gold);
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(12, 10, 8, 0.45);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
 }
 
 /* Select Label - Always Visible */
@@ -1372,4 +1418,364 @@ body.nav-open {
     font-size: var(--fs-lg);
     font-weight: 600;
     color: var(--color-gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AURUM-ELEGANT™ SIGNATURE ORNAMENTS & MOTIFS
+   Premium Golden Elegance Collection
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   Aurum Crown Corner Ornaments
+   ───────────────────────────────────────────── */
+.aurum-crown-corner {
+    position: fixed;
+    width: 140px;
+    height: 140px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.35;
+    transition: opacity 0.5s ease;
+}
+
+.aurum-crown-corner svg {
+    width: 100%;
+    height: 100%;
+}
+
+.aurum-corner-tl {
+    top: 0;
+    left: 0;
+}
+
+.aurum-corner-tr {
+    top: 0;
+    right: 0;
+    transform: scaleX(-1);
+}
+
+.aurum-corner-bl {
+    bottom: 0;
+    left: 0;
+    transform: scaleY(-1);
+}
+
+.aurum-corner-br {
+    bottom: 0;
+    right: 0;
+    transform: scale(-1);
+}
+
+/* ─────────────────────────────────────────────
+   Aurum Golden Sunburst Background
+   ───────────────────────────────────────────── */
+.aurum-sunburst {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    background:
+        radial-gradient(ellipse 60% 40% at 30% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 60% at 70% 80%, rgba(220, 174, 150, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 50% at 50% 50%, rgba(247, 231, 206, 0.06) 0%, transparent 40%);
+    animation: aurumSunburstShift 20s ease-in-out infinite;
+}
+
+@keyframes aurumSunburstShift {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    33% {
+        opacity: 0.6;
+        transform: scale(1.03) translateX(1%);
+    }
+
+    66% {
+        opacity: 0.4;
+        transform: scale(1.02) translateY(-1%);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   Aurum Elegant Section Divider
+   ───────────────────────────────────────────── */
+.aurum-divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    margin: 2rem 0;
+}
+
+.aurum-divider::before,
+.aurum-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--aurum-crown-gold, #D4AF37) 30%,
+            var(--aurum-crown-rose, #DCAE96) 50%,
+            var(--aurum-crown-gold, #D4AF37) 70%,
+            transparent);
+    opacity: 0.6;
+}
+
+.aurum-divider-crown {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--aurum-crown-gold, #D4AF37);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+    animation: aurumCrownGlow 3s ease-in-out infinite;
+}
+
+@keyframes aurumCrownGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px rgba(220, 174, 150, 0.6));
+        transform: scale(1.05);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   Aurum Golden Dust Particles
+   ───────────────────────────────────────────── */
+.aurum-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.aurum-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--aurum-crown-gold, #D4AF37);
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
+    animation: aurumParticleFloat 18s ease-in-out infinite;
+}
+
+.aurum-particle:nth-child(1) {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.aurum-particle:nth-child(2) {
+    top: 25%;
+    right: 15%;
+    animation-delay: 3s;
+    background: var(--aurum-crown-rose, #DCAE96);
+}
+
+.aurum-particle:nth-child(3) {
+    top: 45%;
+    left: 20%;
+    animation-delay: 6s;
+}
+
+.aurum-particle:nth-child(4) {
+    top: 65%;
+    right: 25%;
+    animation-delay: 9s;
+    background: var(--aurum-crown-brass, #B8962E);
+}
+
+.aurum-particle:nth-child(5) {
+    top: 75%;
+    left: 30%;
+    animation-delay: 12s;
+    background: var(--aurum-crown-rose, #DCAE96);
+}
+
+.aurum-particle:nth-child(6) {
+    bottom: 20%;
+    right: 12%;
+    animation-delay: 15s;
+}
+
+@keyframes aurumParticleFloat {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+
+    15% {
+        opacity: 0.7;
+        transform: translateY(-15px) scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: translateY(-40px) translateX(10px) scale(0.8);
+    }
+
+    85% {
+        opacity: 0.6;
+        transform: translateY(-70px) translateX(-5px) scale(1.2);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   Aurum Premium Card Enhancement
+   ───────────────────────────────────────────── */
+.aurum-card-enhanced {
+    position: relative;
+    overflow: hidden;
+}
+
+.aurum-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--aurum-crown-gold, #D4AF37),
+            var(--aurum-crown-rose, #DCAE96),
+            var(--aurum-crown-gold, #D4AF37),
+            transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.aurum-card-enhanced:hover::before {
+    opacity: 1;
+}
+
+.aurum-card-enhanced::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--aurum-sunburst-primary, linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(247, 231, 206, 0.03) 100%));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.aurum-card-enhanced:hover::after {
+    opacity: 1;
+}
+
+/* ─────────────────────────────────────────────
+   Aurum Golden Shimmer Text
+   ───────────────────────────────────────────── */
+.aurum-shimmer-text {
+    background: linear-gradient(120deg,
+            var(--aurum-crown-gold, #D4AF37) 0%,
+            var(--aurum-crown-rose, #DCAE96) 25%,
+            #F7E7CE 50%,
+            var(--aurum-crown-rose, #DCAE96) 75%,
+            var(--aurum-crown-gold, #D4AF37) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: aurumShimmer 4s linear infinite;
+}
+
+@keyframes aurumShimmer {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   Aurum Crown Glow Buttons
+   ───────────────────────────────────────────── */
+.aurum-btn-crown {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--aurum-crown-gold, #D4AF37), var(--aurum-crown-rose, #DCAE96));
+    border: none;
+    border-radius: 9999px;
+    padding: 1rem 2rem;
+    color: var(--color-deep-brown, #3E2723);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+}
+
+.aurum-btn-crown::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.aurum-btn-crown:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(220, 174, 150, 0.25);
+}
+
+.aurum-btn-crown:hover::before {
+    left: 100%;
+}
+
+/* ─────────────────────────────────────────────
+   Aurum Floral Accent Lines
+   ───────────────────────────────────────────── */
+.aurum-floral-line {
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(212, 175, 55, 0.3) 20%,
+            rgba(212, 175, 55, 0.6) 50%,
+            rgba(212, 175, 55, 0.3) 80%,
+            transparent);
+    position: relative;
+    margin: 2rem auto;
+    max-width: 400px;
+}
+
+.aurum-floral-line::before,
+.aurum-floral-line::after {
+    content: '❦';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--aurum-crown-gold, #D4AF37);
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+.aurum-floral-line::before {
+    left: 0;
+}
+
+.aurum-floral-line::after {
+    right: 0;
 }

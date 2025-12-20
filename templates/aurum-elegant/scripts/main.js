@@ -248,10 +248,12 @@ function playMusic() {
         playPromise.then(() => {
             state.isMusicPlaying = true;
             DOM.musicPlayer.classList.add('playing');
+            DOM.musicToggle.classList.add('playing');
         }).catch((error) => {
             console.log('Auto-play prevented:', error);
             state.isMusicPlaying = false;
             DOM.musicPlayer.classList.remove('playing');
+            DOM.musicToggle.classList.remove('playing');
         });
     }
 }
@@ -261,6 +263,7 @@ function toggleMusic() {
         DOM.bgMusic.pause();
         state.isMusicPlaying = false;
         DOM.musicPlayer.classList.remove('playing');
+        DOM.musicToggle.classList.remove('playing');
     } else {
         playMusic();
     }
@@ -273,6 +276,7 @@ function initMusicPlayer() {
     DOM.bgMusic.addEventListener('ended', () => {
         state.isMusicPlaying = false;
         DOM.musicPlayer.classList.remove('playing');
+        DOM.musicToggle.classList.remove('playing');
     });
 }
 
