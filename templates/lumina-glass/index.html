@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wedding Invitation - Lumina Glass Edition">
+    <title>Andi & Sarah - The Wedding Invitation</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/enhancements.css">
+</head>
+
+<body>
+    <!-- Floral Background Decorations -->
+    <div class="floral-decor floral-top-left"></div>
+    <div class="floral-decor floral-top-right"></div>
+    <div class="floral-decor floral-bottom-left"></div>
+    <div class="floral-decor floral-bottom-right"></div>
+
+    <!-- Floating Petals Container -->
+    <div id="floatingPetals" class="floating-petals"></div>
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="loader-content">
+            <div class="loader-ornament"></div>
+            <h2 class="script-font">Andi & Sarah</h2>
+            <div class="loader-ornament flip"></div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cover Section -->
+    <section id="cover" class="cover">
+        <div class="cover-inner">
+            <!-- Left Floral Decoration -->
+            <div class="cover-floral cover-floral-left"></div>
+
+            <div class="cover-content">
+                <p class="invitation-label">THE WEDDING OF</p>
+                <h1 class="couple-names script-font">Andi & Sarah</h1>
+                <div class="date-ornament">
+                    <span class="ornament-line"></span>
+                    <span class="date-text">14 . 02 . 2025</span>
+                    <span class="ornament-line"></span>
+                </div>
+                <p class="guest-greeting">Dear Guest,</p>
+                <p class="guest-name" id="guestName">Beloved Guest</p>
+                <p class="invited-text">You are cordially invited</p>
+                <button class="btn-open" id="openInvitation">
+                    <span class="btn-icon">✉</span>
+                    <span>Open Invitation</span>
+                </button>
+            </div>
+
+            <!-- Right Floral Decoration -->
+            <div class="cover-floral cover-floral-right"></div>
+        </div>
+    </section>
+
+    <!-- Main Content Wrapper (Hidden until open) -->
+    <main id="mainContent" class="main-content hidden">
+        <!-- Bismillah Section -->
+        <section id="bismillah" class="section bismillah-section">
+            <div class="container">
+                <div class="bismillah-content reveal">
+                    <div class="islamic-ornament"></div>
+                    <p class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+                    <p class="arabic-translation">In the name of Allah, the Most Gracious, the Most Merciful</p>
+                    <div class="verse-container">
+                        <p class="verse">"And among His signs is that He created for you from yourselves mates that you
+                            may find tranquility in them; and He placed between you affection and mercy."</p>
+                        <p class="source">— QS. Ar-Rum: 21</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Couple Section -->
+        <section id="couple" class="section couple-section">
+            <div class="container">
+                <h2 class="section-title script-font reveal">The Happy Couple</h2>
+                <div class="couple-wrapper">
+                    <!-- Groom -->
+                    <div class="couple-card reveal">
+                        <div class="photo-frame">
+                            <div class="frame-ornament"></div>
+                            <img src="assets/images/groom.jpg" alt="Andi">
+                        </div>
+                        <h3 class="person-name script-font">Andi Pratama</h3>
+                        <p class="person-title">The Groom</p>
+                        <p class="person-parents">Son of Mr. Ahmad & Mrs. Siti</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">@andipratama</a>
+                        </div>
+                    </div>
+
+                    <!-- Heart Divider -->
+                    <div class="couple-divider reveal">
+                        <div class="heart-symbol">❤</div>
+                    </div>
+
+                    <!-- Bride -->
+                    <div class="couple-card reveal">
+                        <div class="photo-frame">
+                            <div class="frame-ornament"></div>
+                            <img src="assets/images/bride.jpg" alt="Sarah">
+                        </div>
+                        <h3 class="person-name script-font">Sarah Kusuma</h3>
+                        <p class="person-title">The Bride</p>
+                        <p class="person-parents">Daughter of Mr. Budi & Mrs. Fatimah</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">@sarahkusuma</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section id="countdown" class="section countdown-section">
+            <div class="container">
+                <div class="countdown-wrapper reveal">
+                    <h2 class="section-title script-font">Save The Date</h2>
+                    <p class="countdown-subtitle">We're counting every moment until our special day</p>
+                    <div id="countdownTimer" class="timer-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="btn-calendar">
+                        <span>📅</span>
+                        <span>Add to Calendar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Section -->
+        <section id="event" class="section event-section">
+            <div class="container">
+                <h2 class="section-title script-font reveal">Wedding Events</h2>
+                <div class="events-wrapper">
+                    <!-- Akad Nikah -->
+                    <div class="event-card reveal">
+                        <div class="event-icon">💒</div>
+                        <h3 class="event-name">Akad Nikah</h3>
+                        <div class="event-details">
+                            <p class="event-date">Friday, 14 February 2025</p>
+                            <p class="event-time">08:00 - 10:00 WIB</p>
+                        </div>
+                        <div class="event-location">
+                            <p class="venue-name">Masjid Agung Al-Azhar</p>
+                            <p class="venue-address">Jl. Sisingamangaraja, Jakarta Selatan</p>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank" class="btn-map">
+                            <span>📍</span>
+                            <span>Open Maps</span>
+                        </a>
+                    </div>
+
+                    <!-- Resepsi -->
+                    <div class="event-card reveal">
+                        <div class="event-icon">🎊</div>
+                        <h3 class="event-name">Wedding Reception</h3>
+                        <div class="event-details">
+                            <p class="event-date">Friday, 14 February 2025</p>
+                            <p class="event-time">11:00 - 14:00 WIB</p>
+                        </div>
+                        <div class="event-location">
+                            <p class="venue-name">Hotel Mulia Senayan</p>
+                            <p class="venue-address">Jl. Asia Afrika, Jakarta Pusat</p>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank" class="btn-map">
+                            <span>📍</span>
+                            <span>Open Maps</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section id="story" class="section story-section">
+            <div class="container">
+                <h2 class="section-title script-font reveal">Our Love Story</h2>
+                <div class="story-timeline">
+                    <div class="timeline-line"></div>
+
+                    <div class="story-item reveal">
+                        <div class="story-marker"></div>
+                        <div class="story-content">
+                            <span class="story-date">January 2020</span>
+                            <h3>First Meeting</h3>
+                            <p>A simple greeting that started it all. We met at a coffee shop and haven't stopped
+                                talking since. Little did we know that moment would change our lives forever.</p>
+                        </div>
+                    </div>
+
+                    <div class="story-item reveal">
+                        <div class="story-marker"></div>
+                        <div class="story-content">
+                            <span class="story-date">June 2021</span>
+                            <h3>First Date</h3>
+                            <p>After countless conversations and shared laughter, we finally went on our first official
+                                date. It was magical, and we knew something special was beginning.</p>
+                        </div>
+                    </div>
+
+                    <div class="story-item reveal">
+                        <div class="story-marker"></div>
+                        <div class="story-content">
+                            <span class="story-date">December 2023</span>
+                            <h3>The Proposal</h3>
+                            <p>Under the starlit sky, a promise was made. With trembling hands and a heart full of love,
+                                a ring was presented, and "Yes!" was the sweetest word ever spoken.</p>
+                        </div>
+                    </div>
+
+                    <div class="story-item reveal">
+                        <div class="story-marker"></div>
+                        <div class="story-content">
+                            <span class="story-date">February 2025</span>
+                            <h3>Our Wedding</h3>
+                            <p>And now, we invite you to witness the beginning of our forever. Thank you for being part
+                                of our journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section gallery-section">
+            <div class="container">
+                <h2 class="section-title script-font reveal">Our Moments</h2>
+                <div class="gallery-grid reveal">
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery-1.jpg" alt="Gallery 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery-2.jpg" alt="Gallery 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/groom.jpg" alt="Gallery 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/bride.jpg" alt="Gallery 4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section id="rsvp" class="section rsvp-section">
+            <div class="container">
+                <div class="rsvp-wrapper reveal">
+                    <h2 class="section-title script-font">RSVP</h2>
+                    <p class="rsvp-subtitle">We would be honored by your presence. Please let us know if you can attend.
+                    </p>
+                    <form id="rsvpForm" class="rsvp-form">
+                        <div class="form-group">
+                            <input type="text" id="rsvpName" placeholder="Your Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="attendance" required>
+                                <option value="">Will you attend?</option>
+                                <option value="yes">Yes, I will attend</option>
+                                <option value="no">Sorry, I can't make it</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select id="guests">
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="wishes" placeholder="Your wishes for the couple..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send RSVP</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gift Section -->
+        <section id="gift" class="section gift-section">
+            <div class="container">
+                <div class="gift-wrapper reveal">
+                    <h2 class="section-title script-font">Wedding Gift</h2>
+                    <p class="gift-message">Your presence at our wedding is the greatest gift of all. However, if you
+                        wish to honor us with a gift, we would be grateful.</p>
+                    <div class="gift-options">
+                        <div class="bank-card">
+                            <div class="bank-logo">🏦</div>
+                            <p class="bank-name">Bank Central Asia (BCA)</p>
+                            <p class="account-number">1234 5678 90</p>
+                            <p class="account-holder">a.n. Andi Pratama</p>
+                            <button class="btn-copy" data-copy="1234567890">Copy</button>
+                        </div>
+                        <div class="bank-card">
+                            <div class="bank-logo">🏦</div>
+                            <p class="bank-name">Bank Mandiri</p>
+                            <p class="account-number">0987 6543 21</p>
+                            <p class="account-holder">a.n. Sarah Kusuma</p>
+                            <button class="btn-copy" data-copy="0987654321">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thank You Section -->
+        <section id="thankyou" class="section thankyou-section">
+            <div class="container">
+                <div class="thankyou-content reveal">
+                    <h2 class="section-title script-font">Thank You</h2>
+                    <p>We are truly blessed to have you in our lives. Your love and support mean everything to us.</p>
+                    <div class="couple-signature script-font">Andi & Sarah</div>
+                    <div class="signature-date">14 February 2025</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with ❤ by AnoTechHub</p>
+    </footer>
+
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <button class="music-toggle" id="musicToggle">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js" type="module"></script>
+</body>
+
+</html>
